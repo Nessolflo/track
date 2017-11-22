@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">IntelTrack</string>
+    <string name="cargando">Cargando..</string>
+    <string name="esperaunmomento">Espera un momento por favor...</string>
+    <string name="usuario">Usuario</string>
+    <string name="bienvenido">Bienvenido, %1$s</string>
+    <string name="clave">Contraseña</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="camposobligatorios">Todos los campos son obligatorios</string>
+    <string name="usuarioobligatorio">Usuario es obligatorio</string>
+    <string name="claveobligatoria">La clave es obligatoria</string>
+    <string name="conexioninternet">No tienes conexion al servidor, verifica tus datos.</string>
+    <string name="conectandoservidor">Buscando conexión con el servidor...</string>
+    <string name="errorconsultarws">Error al consultar ws, error: %i</string>
+    <string name="errorconsultarwsstring">Error al consultar ws, error: %s</string>
+    <string name="main.menu.action.logout">Cerrar sesión</string>
+    <string name="nombrecliente">Nombre del cliente</string>
+    <string name="flota">Nombre de flota</string>
+    <string name="placa">Placa 666</string>
+    <string name="irwaze">Ir con Waze</string>
+    <string name="irmaps">Ir con Maps</string>
+</resources>

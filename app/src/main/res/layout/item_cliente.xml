@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/paddingMed"
+    >
+    <TextView
+        android:id="@+id/txtNombreCliente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nombrecliente"
+        android:drawableStart="@drawable/ic_person"
+        android:drawableLeft="@drawable/ic_person"
+        android:drawablePadding="@dimen/paddingMin"
+        android:textAppearance="?android:textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/txtFlota"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/flota"
+        android:drawableStart="@drawable/ic_directions_bus"
+        android:drawableLeft="@drawable/ic_directions_bus"
+        android:drawablePadding="@dimen/paddingMin"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:layout_below="@+id/txtNombreCliente"
+        />
+
+</RelativeLayout>
