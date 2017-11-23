@@ -30,6 +30,8 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.versionOkHTTP"
 
     implementation "com.jakewharton:butterknife:$rootProject.ext.versionButterknife"
+    implementation "com.google.firebase:firebase-core:$rootProject.ext.versionFirebase"
+    implementation "com.google.firebase:firebase-crash:$rootProject.ext.versionFirebase"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.versionButterknifeCompiler"
 
     implementation "com.github.bumptech.glide:glide:$rootProject.ext.versionGlide"
@@ -44,3 +46,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
+
+
+
+apply plugin: 'com.google.gms.google-services'
