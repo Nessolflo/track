@@ -1,5 +1,6 @@
 package com.inteltrack.inteltrack.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.inteltrack.inteltrack.R;
+import com.inteltrack.inteltrack.clientes.ClientesActivity;
 import com.inteltrack.inteltrack.domain.JsonKeys;
 
 import org.json.JSONObject;
@@ -77,6 +79,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void finalizar() {
+        Intent i = new Intent(this, ClientesActivity.class);
+        startActivity(i);
         finish();
     }
 
