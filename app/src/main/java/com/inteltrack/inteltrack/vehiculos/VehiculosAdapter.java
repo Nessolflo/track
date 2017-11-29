@@ -19,6 +19,7 @@ import com.inteltrack.inteltrack.domain.JsonKeys;
 public class VehiculosAdapter extends RecyclerView.Adapter<VehiculosAdapter.ItemVehiculo> {
 
     private JsonArray data;
+    private VehiculosContract.View view;
 
     public VehiculosAdapter() {
         data = crearJsonArray();
@@ -49,6 +50,8 @@ public class VehiculosAdapter extends RecyclerView.Adapter<VehiculosAdapter.Item
             JsonObject json = new JsonObject();
             json.addProperty(JsonKeys.nombre, "Cliente "+i);
             json.addProperty(JsonKeys.placa, "P-12"+i);
+            json.addProperty(JsonKeys.latitud, 14.5647064);
+            json.addProperty(JsonKeys.longitud, -90.4663358);
             jsonArray.add(json);
         }
 
@@ -68,9 +71,33 @@ public class VehiculosAdapter extends RecyclerView.Adapter<VehiculosAdapter.Item
             txtWaze = (TextView) itemView.findViewById(R.id.txtWaze);
         }
 
-        public void bind(JsonObject json){
+        public void bind(final JsonObject json){
             txtPlaca.setText(json.get(JsonKeys.placa).getAsString());
             txtCliente.setText(json.get(JsonKeys.nombre).getAsString());
+            txtWaze.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(getView()!=null)
+                        getView().abrirWaze(json.get(JsonKeys.latitud).getAsDouble(),
+                                json.get(JsonKeys.longitud).getAsDouble());
+                }
+            });
+            txtMaps.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(getView()!=null)
+                        getView().abrirMaps(json.get(JsonKeys.latitud).getAsDouble(),
+                                json.get(JsonKeys.longitud).getAsDouble());
+                }
+            });
         }
+    }
+
+    public VehiculosContract.View getView() {
+        return view;
+    }
+
+    public void setView(VehiculosContract.View view) {
+        this.view = view;
     }
 }
