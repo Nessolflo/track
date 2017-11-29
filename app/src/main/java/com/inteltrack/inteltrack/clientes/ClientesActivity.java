@@ -1,5 +1,6 @@
 package com.inteltrack.inteltrack.clientes;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -15,11 +16,14 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.inteltrack.inteltrack.R;
 import com.inteltrack.inteltrack.login.LoginPresenter;
+import com.inteltrack.inteltrack.vehiculos.VehiculosActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ClientesActivity extends AppCompatActivity implements ClienteContract.View {
+
+    public static final String KEY_VEHICULO= "vehiculo";
 
     @BindView(R.id.appbar)
     Toolbar appbar;
@@ -80,7 +84,10 @@ public class ClientesActivity extends AppCompatActivity implements ClienteContra
 
     @Override
     public void abrirFlotilla(JsonObject cliente) {
-
+        Intent i = new Intent(this, VehiculosActivity.class);
+        i.putExtra(KEY_VEHICULO, cliente.toString());
+        startActivity(i);
+        finalizar();
     }
 
     private void setToolbar(){

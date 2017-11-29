@@ -22,11 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".clientes.ClientesActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeContenedor"
-            />
+        <activity
+            android:name=".clientes.ClientesActivity"/>
+        <activity android:name=".vehiculos.VehiculosActivity"/>
     </application>
 
 </manifest>

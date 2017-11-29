@@ -11,4 +11,7 @@ public class JsonKeys {
     public static final String pass = "pass";
     public static final String nombre= "nombre";
     public static final String flotilla = "flotilla";
+    public static final String placa = "placa";
+    public static final String latitud = "latitud";
+    public static final String longitud= "longitud";
 }
