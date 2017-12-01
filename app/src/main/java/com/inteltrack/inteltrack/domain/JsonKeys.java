@@ -10,8 +10,10 @@ public class JsonKeys {
     public static final String user= "user";
     public static final String pass = "pass";
     public static final String nombre= "nombre";
+    public static final String propietario="propietario";
+    public static final String grupo="grupo";
     public static final String flotilla = "flotilla";
     public static final String placa = "placa";
-    public static final String latitud = "latitud";
-    public static final String longitud= "longitud";
+    public static final String latitud = "latitude";
+    public static final String longitud= "longitude";
 }

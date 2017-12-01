@@ -9,13 +9,19 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.inteltrack.inteltrack.R;
+import com.inteltrack.inteltrack.domain.JsonKeys;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,9 +34,10 @@ public class VehiculosActivity extends AppCompatActivity implements VehiculosCon
     RecyclerView listaVehiculos;
     @BindView(R.id.progress)
     ProgressBar progress;
-
+    private SearchView searchView;
     private VehiculosContract.Presenter presenter;
     private VehiculosAdapter adapter;
+    private VehiculosContract.AppConstant appConstant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +49,27 @@ public class VehiculosActivity extends AppCompatActivity implements VehiculosCon
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate( R.menu.buscador, menu);
+        final MenuItem myActionMenuItem = menu.findItem( R.id.action_search);
+        searchView = (SearchView) myActionMenuItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String s) {
+                presenter.filtrarInfo(s);
+                return false;
+            }
+        });
+        return true;
+    }
+
+
+    @Override
     public void setPresenter(VehiculosContract.Presenter presenter) {
         this.presenter = presenter;
         presenter.consultarData();
@@ -50,6 +78,7 @@ public class VehiculosActivity extends AppCompatActivity implements VehiculosCon
     @Override
     public void setProgress(boolean show) {
         progress.setVisibility(show ? View.VISIBLE : View.GONE);
+        listaVehiculos.setVisibility(show ? View.GONE : View.VISIBLE);
     }
 
     @Override
@@ -91,21 +120,49 @@ public class VehiculosActivity extends AppCompatActivity implements VehiculosCon
     }
 
     @Override
+    public void obtenerCoordenadas(String placa, VehiculosContract.AppConstant app) {
+        presenter.consultarPlaca(placa);
+        this.appConstant = app;
+    }
+
+    @Override
+    public void abrirAplicacion(JsonObject jsonObject) {
+        if(jsonObject!=null && jsonObject.get(JsonKeys.latitud)!=null && jsonObject.get(JsonKeys.longitud)!=null) {
+            final double latitud = jsonObject.get(JsonKeys.latitud).getAsDouble();
+            final double longitud = jsonObject.get(JsonKeys.longitud).getAsDouble();
+            if (appConstant != null) {
+                switch (appConstant) {
+                    case WAZE:
+                        abrirWaze(latitud, longitud);
+                        break;
+                    case GOOGLE:
+                        abrirMaps(latitud, longitud);
+                        break;
+                }
+            }
+        }else
+            message(getString(R.string.nodata));
+    }
+
+    @Override
     public void abrirPlaystore() {
 
     }
 
     @Override
     public void crearAdapter(JsonArray jsonArray) {
-        adapter= new VehiculosAdapter();
-        adapter.setView(this);
-        listaVehiculos.setHasFixedSize(true);
-        listaVehiculos.setAdapter(adapter);
-        listaVehiculos.setLayoutManager(
-                new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
-        listaVehiculos.addItemDecoration(
-                new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-        listaVehiculos.setItemAnimator(new DefaultItemAnimator());
+        setProgress(false);
+        if(adapter==null) {
+            adapter = new VehiculosAdapter(jsonArray);
+            adapter.setView(this);
+            listaVehiculos.setHasFixedSize(true);
+            listaVehiculos.setAdapter(adapter);
+            listaVehiculos.setLayoutManager(
+                    new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+            listaVehiculos.setItemAnimator(new DefaultItemAnimator());
+        }else
+            adapter.setData(jsonArray);
+
     }
 
     private void setToolbar(){

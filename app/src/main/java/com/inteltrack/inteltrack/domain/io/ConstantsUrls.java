@@ -5,13 +5,16 @@ package com.inteltrack.inteltrack.domain.io;
  */
 
 public class ConstantsUrls {
-    public static final String IP = "";
+    public static final String IP = "http://inteltrackgt.com:3000";
     public static final String PATH = "";
 
     public static final String URL_LOGIN = PATH+"/login";
+    public static final String URL_FLOTILLA = PATH+"/flotillas";
+    public static final String URL_COORDENADAS = PATH+"/flotillas/{"+Params.PLACA+"}/position";
 
     public class Params{
         public static final String USER = "user";
         public static final String PASSWORD = "password";
+        public static final String PLACA ="placa";
     }
 }

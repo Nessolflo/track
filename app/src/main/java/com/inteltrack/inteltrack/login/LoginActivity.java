@@ -15,6 +15,7 @@ import com.google.gson.JsonParser;
 import com.inteltrack.inteltrack.R;
 import com.inteltrack.inteltrack.clientes.ClientesActivity;
 import com.inteltrack.inteltrack.domain.JsonKeys;
+import com.inteltrack.inteltrack.vehiculos.VehiculosActivity;
 
 import org.json.JSONObject;
 
@@ -79,7 +80,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void finalizar() {
-        Intent i = new Intent(this, ClientesActivity.class);
+        Intent i = new Intent(this, VehiculosActivity.class);
         startActivity(i);
         finish();
     }

@@ -12,6 +12,8 @@ import com.google.gson.JsonParser;
 import com.inteltrack.inteltrack.R;
 import com.inteltrack.inteltrack.domain.JsonKeys;
 
+import org.w3c.dom.Text;
+
 /**
  * Created by nestorso on 28/11/2017.
  */
@@ -21,8 +23,8 @@ public class VehiculosAdapter extends RecyclerView.Adapter<VehiculosAdapter.Item
     private JsonArray data;
     private VehiculosContract.View view;
 
-    public VehiculosAdapter() {
-        data = crearJsonArray();
+    public VehiculosAdapter(JsonArray data) {
+        this.data = data;
     }
 
     @Override
@@ -60,6 +62,8 @@ public class VehiculosAdapter extends RecyclerView.Adapter<VehiculosAdapter.Item
     class ItemVehiculo extends RecyclerView.ViewHolder{
         TextView txtPlaca;
         TextView txtCliente;
+        TextView txtGrupo;
+        TextView txtVehiculo;
         TextView txtMaps;
         TextView txtWaze;
 
@@ -67,30 +71,41 @@ public class VehiculosAdapter extends RecyclerView.Adapter<VehiculosAdapter.Item
             super(itemView);
             txtPlaca =(TextView) itemView.findViewById(R.id.txtPlaca);
             txtCliente = (TextView) itemView.findViewById(R.id.txtCliente);
+            txtGrupo = (TextView) itemView.findViewById(R.id.txtGrupo);
+            txtVehiculo = (TextView) itemView.findViewById(R.id.txtVehiculo);
             txtMaps = (TextView) itemView.findViewById(R.id.txtMaps);
             txtWaze = (TextView) itemView.findViewById(R.id.txtWaze);
         }
 
         public void bind(final JsonObject json){
-            txtPlaca.setText(json.get(JsonKeys.placa).getAsString());
-            txtCliente.setText(json.get(JsonKeys.nombre).getAsString());
+            txtPlaca.setText(json.get(JsonKeys.placa).getAsString().toUpperCase());
+            txtCliente.setText(json.get(JsonKeys.propietario).getAsString().toUpperCase());
+            txtGrupo.setText(json.get(JsonKeys.grupo).getAsString().toUpperCase());
+            txtVehiculo.setText(json.get(JsonKeys.nombre).getAsString().toUpperCase());
             txtWaze.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if(getView()!=null)
-                        getView().abrirWaze(json.get(JsonKeys.latitud).getAsDouble(),
-                                json.get(JsonKeys.longitud).getAsDouble());
+                        getView().obtenerCoordenadas(json.get(JsonKeys.placa).getAsString(), VehiculosContract.AppConstant.WAZE);
                 }
             });
             txtMaps.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if(getView()!=null)
-                        getView().abrirMaps(json.get(JsonKeys.latitud).getAsDouble(),
-                                json.get(JsonKeys.longitud).getAsDouble());
+                        getView().obtenerCoordenadas(json.get(JsonKeys.placa).getAsString(), VehiculosContract.AppConstant.GOOGLE);
                 }
             });
         }
+    }
+
+    public JsonArray getData() {
+        return data;
+    }
+
+    public void setData(JsonArray data) {
+        this.data = data;
+        notifyDataSetChanged();
     }
 
     public VehiculosContract.View getView() {

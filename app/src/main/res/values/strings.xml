@@ -22,4 +22,8 @@
     <string name="irmaps">Ir con Maps</string>
     <string name="clientes">Clientes</string>
     <string name="vehiculos">Vehiculos</string>
+    <string name="nodata">No existe información de este vehiculo</string>
+    <string name="buscar">Buscar</string>
+    <string name="nombregrupo">Nombre del grupo</string>
+    <string name="nombrevehiculo">Nombre del vehiculo</string>
 </resources>
