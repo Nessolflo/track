@@ -2,13 +2,13 @@
     <string name="app_name">IntelTrack</string>
     <string name="cargando">Cargando..</string>
     <string name="esperaunmomento">Espera un momento por favor...</string>
-    <string name="usuario">Usuario</string>
+    <string name="usuario">Email</string>
     <string name="bienvenido">Bienvenido, %1$s</string>
     <string name="clave">Contraseña</string>
     <string name="ingresar">Ingresar</string>
     <string name="registrarse">Registrarse</string>
     <string name="camposobligatorios">Todos los campos son obligatorios</string>
-    <string name="usuarioobligatorio">Usuario es obligatorio</string>
+    <string name="usuarioobligatorio">Email invalido, es obligatorio</string>
     <string name="claveobligatoria">La clave es obligatoria</string>
     <string name="conexioninternet">No tienes conexion al servidor, verifica tus datos.</string>
     <string name="conectandoservidor">Buscando conexión con el servidor...</string>
@@ -26,4 +26,6 @@
     <string name="buscar">Buscar</string>
     <string name="nombregrupo">Nombre del grupo</string>
     <string name="nombrevehiculo">Nombre del vehiculo</string>
+    <string name="cerrarsesion">Cerrar sesión</string>
+    <string name="revisatusdatos">Comprueba tus datos, error al iniciar sesión</string>
 </resources>

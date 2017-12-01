@@ -3,6 +3,8 @@ package com.inteltrack.inteltrack.login;
 
 import android.os.Handler;
 
+import com.google.firebase.auth.FirebaseUser;
+
 /**
  * Created by NestorSo on 21/11/2017.
  */
@@ -32,8 +34,9 @@ public class LoginPresenter implements LoginContract.Presenter, LoginInteractor.
     }
 
     @Override
-    public void onStart() {
-
+    public void onStart(FirebaseUser user) {
+        if(user!=null)
+            mView.finalizar();
     }
 
     @Override
@@ -49,8 +52,8 @@ public class LoginPresenter implements LoginContract.Presenter, LoginInteractor.
     }
 
     @Override
-    public void auntenticacionIncorrecta(String mensaje) {
+    public void auntenticacionIncorrecta() {
         mView.setProgress(false);
-        mView.message(mensaje);
+        mView.autenticacionIncorrecta();
     }
 }

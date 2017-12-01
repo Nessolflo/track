@@ -18,10 +18,12 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.inteltrack.inteltrack.R;
 import com.inteltrack.inteltrack.domain.JsonKeys;
+import com.inteltrack.inteltrack.login.LoginActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -68,6 +70,17 @@ public class VehiculosActivity extends AppCompatActivity implements VehiculosCon
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()== R.id.action_close_session){
+            FirebaseAuth mAuth= FirebaseAuth.getInstance();
+            mAuth.signOut();
+            finalizar();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 
     @Override
     public void setPresenter(VehiculosContract.Presenter presenter) {
@@ -88,6 +101,8 @@ public class VehiculosActivity extends AppCompatActivity implements VehiculosCon
 
     @Override
     public void finalizar() {
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
         finish();
     }
 

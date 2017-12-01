@@ -1,5 +1,6 @@
 package com.inteltrack.inteltrack.login;
 
+import com.google.firebase.auth.FirebaseUser;
 import com.inteltrack.inteltrack.domain.BaseView;
 
 /**
@@ -11,11 +12,12 @@ public interface LoginContract {
         boolean usuarioValido();
         boolean claveValida();
         void errorDeConexion();
+        void autenticacionIncorrecta();
         void login();
     }
 
     interface Presenter {
         void login(String usuario, String clave);
-        void onStart();
+        void onStart(FirebaseUser user);
     }
 }

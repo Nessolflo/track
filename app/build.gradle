@@ -36,6 +36,7 @@ dependencies {
     implementation "com.google.firebase:firebase-core:$rootProject.ext.versionFirebase"
     implementation "com.google.firebase:firebase-crash:$rootProject.ext.versionFirebase"
     implementation "com.google.firebase:firebase-messaging:$rootProject.ext.versionFirebase"
+    implementation "com.google.firebase:firebase-auth:$rootProject.ext.versionFirebase"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.versionButterknifeCompiler"
 
     implementation "com.github.bumptech.glide:glide:$rootProject.ext.versionGlide"

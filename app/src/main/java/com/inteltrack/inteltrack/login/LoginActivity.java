@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.inteltrack.inteltrack.R;
@@ -35,6 +37,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     LinearLayout activityLogin;
 
     private LoginContract.Presenter presenter;
+    private FirebaseAuth mAuth;
 
 
     @Override
@@ -43,8 +46,16 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         new LoginPresenter(this, new LoginInteractor(this));
+        mAuth = FirebaseAuth.getInstance();
         if(savedInstanceState!=null)
             restaurarData(savedInstanceState.getString(JsonKeys.KEY_DATA));
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        presenter.onStart(currentUser);
     }
 
     @Override
@@ -88,9 +99,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public boolean usuarioValido() {
         boolean result = !txtUsuario.getText().toString().isEmpty();
-        if (!result)
+        if (!result || !android.util.Patterns.EMAIL_ADDRESS.matcher(txtUsuario.getText().toString()).matches()) {
             message(getString(R.string.usuarioobligatorio));
-        return result;
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -111,6 +124,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     public void login() {
         if (usuarioValido() && claveValida())
             presenter.login(txtUsuario.getText().toString(), txtClave.getText().toString());
+    }
+
+    @Override
+    public void autenticacionIncorrecta() {
+        message(getString(R.string.revisatusdatos));
     }
 
     private void restaurarData(String datas){

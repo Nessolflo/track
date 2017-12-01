@@ -1,7 +1,5 @@
 package com.inteltrack.inteltrack.vehiculos;
 
-import android.util.Log;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.inteltrack.inteltrack.domain.JsonKeys;

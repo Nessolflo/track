@@ -38,7 +38,7 @@ ext{
     versionRetroFit = '2.3.0'
     versionGSON = '2.3.0'
     versionOkHTTP = '3.6.0'
-    versionFirebase = '11.6.0'
+    versionFirebase = '11.6.2'
     versionButterknife = '8.8.1'
     versionDesign = '26.1.0'
     versionButterknifeCompiler = '8.8.1'
