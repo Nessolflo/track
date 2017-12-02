@@ -237,7 +237,7 @@ public class VehiculosFragment extends Fragment implements VehiculosContract.Vie
 
     private String getDate() {
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat mdformat = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss", Locale.getDefault());
+        SimpleDateFormat mdformat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault());
         return mdformat.format(calendar.getTime());
     }
 }
