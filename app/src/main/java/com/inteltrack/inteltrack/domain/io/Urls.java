@@ -17,7 +17,7 @@ public interface Urls {
     Call<JsonElement> login(@Query(ConstantsUrls.Params.USER) String usuario,
                             @Query(ConstantsUrls.Params.PASSWORD) String password);
     @GET(ConstantsUrls.URL_FLOTILLA)
-    Call<JsonElement> flotillas();
+    Call<JsonElement> flotillas(@Query(ConstantsUrls.Params.STATUS) String status);
     @GET(ConstantsUrls.URL_COORDENADAS)
     Call<JsonElement> coordenadas(@Path(ConstantsUrls.Params.PLACA) String placa);
 }

@@ -3,6 +3,7 @@ package com.inteltrack.inteltrack.vehiculos;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.inteltrack.inteltrack.domain.JsonKeys;
+import com.inteltrack.inteltrack.domain.io.ConstantsUrls;
 
 /**
  * Created by nestorso on 28/11/2017.
@@ -21,9 +22,9 @@ public class VehiculosPresenter implements VehiculosContract.Presenter, Vehiculo
     }
 
     @Override
-    public void consultarData() {
+    public void consultarData(boolean isActive) {
         view.setProgress(true);
-        interactor.buscarData(this);
+        interactor.buscarData( isActive? ConstantsUrls.Status.active: ConstantsUrls.Status.inactive, this);
     }
 
     @Override

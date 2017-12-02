@@ -28,4 +28,10 @@
     <string name="nombrevehiculo">Nombre del vehiculo</string>
     <string name="cerrarsesion">Cerrar sesión</string>
     <string name="revisatusdatos">Comprueba tus datos, error al iniciar sesión</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="activos">Activos</string>
+    <string name="inactivos">Inactivos</string>
+    <string name="ultimaactualizacion">Última actualización: %s</string>
 </resources>

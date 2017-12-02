@@ -45,5 +45,5 @@ ext{
     versionPlayServices = '11.0.4'
     versionGlide = '4.0.0-RC1'
     versionActiveAndroid = '3.1.0-SNAPSHOT'
-    versionEventBus = '3.0.0'
+    versionEventBus = '3.1.1'
 }

@@ -6,6 +6,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.inteltrack.inteltrack.domain.BaseInteractor;
+import com.inteltrack.inteltrack.domain.io.ConstantsUrls;
 import com.inteltrack.inteltrack.domain.io.RetroFitHelper;
 
 import retrofit2.Call;
@@ -22,13 +23,14 @@ public class VehiculosInteractor extends BaseInteractor {
         super(mContext);
     }
 
-    public void buscarData(final Callback callback){
-        RetroFitHelper.getApiServices().flotillas().enqueue(new retrofit2.Callback<JsonElement>() {
+    public void buscarData(ConstantsUrls.Status status, final Callback callback){
+        RetroFitHelper.getApiServices().flotillas(status.name()).enqueue(new retrofit2.Callback<JsonElement>() {
             @Override
             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-                if(callback!=null && response.body()!=null){
+                if(callback!=null && response.body()!=null && response.body() instanceof JsonArray){
                     callback.cargaCorrecta(response.body().getAsJsonArray());
-                }
+                }else if(callback!=null)
+                    callback.cargaIncorrecta("");
             }
 
             @Override

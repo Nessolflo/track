@@ -1,4 +1,4 @@
-package com.inteltrack.inteltrack.vehiculos;
+package com.inteltrack.inteltrack.vehiculos.adaptadores;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,8 +11,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.inteltrack.inteltrack.R;
 import com.inteltrack.inteltrack.domain.JsonKeys;
-
-import org.w3c.dom.Text;
+import com.inteltrack.inteltrack.vehiculos.VehiculosContract;
 
 /**
  * Created by nestorso on 28/11/2017.

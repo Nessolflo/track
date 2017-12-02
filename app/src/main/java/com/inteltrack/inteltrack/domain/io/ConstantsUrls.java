@@ -16,5 +16,11 @@ public class ConstantsUrls {
         public static final String USER = "user";
         public static final String PASSWORD = "password";
         public static final String PLACA ="placa";
+        public static final String STATUS = "status";
+    }
+
+    public enum Status{
+        active,
+        inactive
     }
 }
