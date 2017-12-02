@@ -96,14 +96,16 @@ public class VehiculosAdapter extends RecyclerView.Adapter<VehiculosAdapter.Item
                 @Override
                 public void onClick(View view) {
                     if(getView()!=null)
-                        getView().obtenerCoordenadas(json.get(JsonKeys.placa).getAsString(), VehiculosContract.AppConstant.WAZE);
+                        getView().abrirWaze(json.get(JsonKeys.latitud).getAsDouble(), json.get(JsonKeys.longitud).getAsDouble());
+                        //getView().obtenerCoordenadas(json.get(JsonKeys.placa).getAsString(), VehiculosContract.AppConstant.WAZE);
                 }
             });
             txtMaps.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if(getView()!=null)
-                        getView().obtenerCoordenadas(json.get(JsonKeys.placa).getAsString(), VehiculosContract.AppConstant.GOOGLE);
+                        getView().abrirMaps(json.get(JsonKeys.latitud).getAsDouble(), json.get(JsonKeys.longitud).getAsDouble());
+                        //getView().obtenerCoordenadas(json.get(JsonKeys.placa).getAsString(), VehiculosContract.AppConstant.GOOGLE);
                 }
             });
         }
