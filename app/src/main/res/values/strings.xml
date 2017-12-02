@@ -34,4 +34,9 @@
     <string name="activos">Activos</string>
     <string name="inactivos">Inactivos</string>
     <string name="ultimaactualizacion">Última actualización: %s</string>
+
+    <string name="title_activity_splash">Splash</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="velocidad">Velocidad: %s KM/H</string>
 </resources>

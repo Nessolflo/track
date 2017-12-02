@@ -65,7 +65,7 @@ public class VehiculosPresenter implements VehiculosContract.Presenter, Vehiculo
     public void cargaCorrecta(JsonArray jsonArray) {
         this.jsonData = jsonArray;
         view.crearAdapter(jsonArray);
-
+        view.actualizarEtiqueta();
     }
 
     @Override

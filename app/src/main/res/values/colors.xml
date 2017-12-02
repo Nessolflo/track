@@ -13,4 +13,6 @@
     <color name="colorDivider">#BDBDBD</color>
     <color name="colorError">#F44336</color>
     <color name="colorProgress">#448AFF</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

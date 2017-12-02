@@ -61,11 +61,20 @@
                 android:textColor="@color/colorSecondaryText"
                 android:textSize="14sp" />
 
+            <TextView
+                android:id="@+id/txtVelocidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtVehiculo"
+                android:text="@string/velocidad"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="14sp" />
+
             <View
                 android:id="@+id/viewdivisor"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_below="@+id/txtVehiculo"
+                android:layout_below="@+id/txtVelocidad"
                 android:layout_marginBottom="@dimen/paddingMin"
                 android:layout_marginTop="@dimen/paddingMin"
                 android:background="@color/colorDivider" />

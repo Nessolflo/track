@@ -53,7 +53,7 @@ public class VehiculosFragment extends Fragment implements VehiculosContract.Vie
     @BindView(R.id.txtEstatus)
     TextView txtEstatus;
     private boolean isActive;
-    private String tag="";
+    private String tag = "";
 
     private VehiculosContract.Presenter presenter;
     private VehiculosAdapter adapter;
@@ -197,7 +197,6 @@ public class VehiculosFragment extends Fragment implements VehiculosContract.Vie
 
     @Override
     public void crearAdapter(JsonArray jsonArray) {
-        txtEstatus.setText(String.format(getString(R.string.ultimaactualizacion), getDate()));
         setProgress(false);
         if (adapter == null) {
             adapter = new VehiculosAdapter(jsonArray);
@@ -217,12 +216,17 @@ public class VehiculosFragment extends Fragment implements VehiculosContract.Vie
     @Override
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void filtrarInfo(VehiculoBusqueda tag) {
-        this.tag=tag.getTag();
+        this.tag = tag.getTag();
         presenter.filtrarInfo(tag.getTag());
-        if(!tag.getTag().isEmpty())
+        if (!tag.getTag().isEmpty())
             swipeRefresh.setEnabled(false);
         else
             swipeRefresh.setEnabled(true);
+    }
+
+    @Override
+    public void actualizarEtiqueta() {
+        txtEstatus.setText(String.format(getString(R.string.ultimaactualizacion), getDate()));
     }
 
     @Override

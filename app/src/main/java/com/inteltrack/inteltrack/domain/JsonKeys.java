@@ -16,4 +16,5 @@ public class JsonKeys {
     public static final String placa = "placa";
     public static final String latitud = "latitude";
     public static final String longitud= "longitude";
+    public static final String lastVelocity = "velocity";
 }

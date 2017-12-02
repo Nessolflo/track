@@ -1,6 +1,7 @@
 package com.inteltrack.inteltrack.vehiculos.adaptadores;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +64,7 @@ public class VehiculosAdapter extends RecyclerView.Adapter<VehiculosAdapter.Item
         TextView txtCliente;
         TextView txtGrupo;
         TextView txtVehiculo;
+        TextView txtVelocidad;
         TextView txtMaps;
         TextView txtWaze;
 
@@ -74,13 +76,22 @@ public class VehiculosAdapter extends RecyclerView.Adapter<VehiculosAdapter.Item
             txtVehiculo = (TextView) itemView.findViewById(R.id.txtVehiculo);
             txtMaps = (TextView) itemView.findViewById(R.id.txtMaps);
             txtWaze = (TextView) itemView.findViewById(R.id.txtWaze);
+            txtVelocidad = (TextView) itemView.findViewById(R.id.txtVelocidad);
         }
 
         public void bind(final JsonObject json){
+            Log.e(getClass().getName(), json.toString());
             txtPlaca.setText(json.get(JsonKeys.placa).getAsString().toUpperCase());
             txtCliente.setText(json.get(JsonKeys.propietario).getAsString().toUpperCase());
             txtGrupo.setText(json.get(JsonKeys.grupo).getAsString().toUpperCase());
             txtVehiculo.setText(json.get(JsonKeys.nombre).getAsString().toUpperCase());
+            if(json.get(JsonKeys.lastVelocity) == null)
+                txtVelocidad.setVisibility(View.GONE);
+            else {
+                txtVelocidad.setVisibility(View.VISIBLE);
+                txtVelocidad.setText(String.format(txtVelocidad.getContext().getString(R.string.velocidad),
+                        json.get(JsonKeys.lastVelocity).getAsString()));
+            }
             txtWaze.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

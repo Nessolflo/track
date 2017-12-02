@@ -17,6 +17,7 @@ public class VehiculosContract {
         void obtenerCoordenadas(String placa, AppConstant app);
         void abrirAplicacion(JsonObject jsonObject);
         void filtrarInfo(VehiculoBusqueda tag);
+        void actualizarEtiqueta();
         void abrirPlaystore();
         void crearAdapter(JsonArray jsonArray);
     }
